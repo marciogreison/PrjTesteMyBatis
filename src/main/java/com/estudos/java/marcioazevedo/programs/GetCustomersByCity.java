@@ -1,25 +1,24 @@
 package com.estudos.java.marcioazevedo.programs;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.estudos.java.marcioazevedo.dao.CustomerDao;
 import com.estudos.java.marcioazevedo.dao.DaoFactory;
 import com.estudos.java.marcioazevedo.entity.Customer;
 
-public class AddNewCustomer {
+public class GetCustomersByCity {
 
 	public static void main(String[] args) throws IOException {
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
-		Customer c1 = new Customer();
-		c1.setName("Marcio");
-		c1.setCity("Azevedo");
-		c1.setEmail("marcioazevedo@example.com");
-		c1.setPhone("3423423423423");
+		String city = "Mysore";
+		List<Customer> list = dao.getCustomersByCity(city);
 		
-		dao.addCustomer(c1);
-		
-		System.out.println(c1);
+		System.out.println("There are " + list.size() + " customers from " + city);
+		for(Customer c: list) {
+			System.out.println(c);
+		}
 	}
 
 }

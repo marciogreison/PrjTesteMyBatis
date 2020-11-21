@@ -6,20 +6,20 @@ import com.estudos.java.marcioazevedo.dao.CustomerDao;
 import com.estudos.java.marcioazevedo.dao.DaoFactory;
 import com.estudos.java.marcioazevedo.entity.Customer;
 
-public class AddNewCustomer {
+public class RetrieveCustomerById {
 
 	public static void main(String[] args) throws IOException {
+
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
-		Customer c1 = new Customer();
-		c1.setName("Marcio");
-		c1.setCity("Azevedo");
-		c1.setEmail("marcioazevedo@example.com");
-		c1.setPhone("3423423423423");
-		
-		dao.addCustomer(c1);
-		
-		System.out.println(c1);
+		int id = 22;
+		Customer c1 = dao.getCustomerById(id);
+		if(c1==null) {
+			System.out.println("No customer data for id: " + id);
+		}
+		else {
+			System.out.println(c1);
+		}
 	}
 
 }

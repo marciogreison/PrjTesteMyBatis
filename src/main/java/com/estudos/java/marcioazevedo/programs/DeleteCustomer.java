@@ -6,20 +6,22 @@ import com.estudos.java.marcioazevedo.dao.CustomerDao;
 import com.estudos.java.marcioazevedo.dao.DaoFactory;
 import com.estudos.java.marcioazevedo.entity.Customer;
 
-public class AddNewCustomer {
+public class DeleteCustomer {
 
 	public static void main(String[] args) throws IOException {
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
-		Customer c1 = new Customer();
-		c1.setName("Marcio");
-		c1.setCity("Azevedo");
-		c1.setEmail("marcioazevedo@example.com");
-		c1.setPhone("3423423423423");
+		int id = 12;
 		
-		dao.addCustomer(c1);
+		Customer c1 = dao.getCustomerById(id);
 		
-		System.out.println(c1);
+		if(c1==null) {
+			System.out.println("No data found for id " + id);
+		}
+		else {
+			dao.deleteCustomer(id);
+			System.out.println("Customer with id "+id+" is deleted.");
+		}
+		
 	}
-
 }
