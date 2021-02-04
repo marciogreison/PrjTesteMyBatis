@@ -41,9 +41,9 @@ node {
       // build docker image
       sh "whoami"
       sh "ls -all /var/run/docker.sock"
-      sh "mv ./target/hello*.jar ./data" 
+      sh "mv ./target/PrjTesteMyBatis*.jar ./data" 
       
-      dockerImage = docker.build("hello-world-java")
+      dockerImage = docker.build("prj-teste-my-batis")
     }
    
     stage('Deploy Docker Image'){
