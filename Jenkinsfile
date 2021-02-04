@@ -69,7 +69,7 @@ node {
       sh "docker push ${dockerImageTag}"
     }
 
-}
+
 
 /** @return The tag name, or `null` if the current commit isn't a tag. */
 String gitTagName() {
@@ -103,4 +103,6 @@ boolean isTag(String desc) {
     result = !match
     match = null // prevent serialisation
     return result
+}
+
 }
