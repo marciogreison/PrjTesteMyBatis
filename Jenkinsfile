@@ -10,7 +10,7 @@ node {
     def dockerRepoUrl = "localhost:5000"
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
-    
+stages {
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/marciogreison/PrjTesteMyBatis.git'
@@ -36,7 +36,17 @@ node {
         //  echo "This is branch b"
       //})
     //}
-		
+    stage('Unit Tests') {
+            steps {
+                sh 'mvn surefire:test'
+            }
+    }
+    stage('Integration Tests') {
+            steps {
+                sh 'mvn failsafe:integration-test'
+            }
+    }
+	
     stage('Build Docker Image') {
       // build docker image
       sh "whoami"
@@ -56,4 +66,5 @@ node {
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
     }
+}
 }
