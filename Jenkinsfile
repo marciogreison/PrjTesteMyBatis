@@ -36,15 +36,8 @@ node {
         //  echo "This is branch b"
       //})
     //}
-    stage('Unit Tests') {
-            steps {
-                sh 'mvn surefire:test'
-            }
-    }
-    stage('Integration Tests') {
-            steps {
-                sh 'mvn failsafe:integration-test'
-            }
+    stage('Tests') {
+       sh 'mvn test'
     }
 	
     stage('Build Docker Image') {
