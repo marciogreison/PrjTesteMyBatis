@@ -27,8 +27,7 @@ jobs:
       uses: docker/build-push-action@v2.2.2 
       with:
         push: true
-        tags: user/PrjTesteMyBatis:latest
-        secrets: GIT_AUTH_TOKEN=${{ secrets.MYTOKEN }}        
+        tags: marciogreison81/prjtestemybatis:latest
         build-args: arg1=value1 arg2=value2         
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}          
