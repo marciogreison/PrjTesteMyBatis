@@ -20,6 +20,10 @@ node {
       mvnHome = tool 'maven-3.6.1'
     }    
   
+    stage('Tests') {
+       sh "'${mvnHome}/bin/mvn' clean test"
+    }
+
     stage('Build Project') {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
@@ -35,11 +39,7 @@ node {
         //publishJunitTestsResultsToSonar: {
         //  echo "This is branch b"
       //})
-    //}
-    stage('Tests') {
-       sh 'mvn test'
-    }
-	
+    //}	
     stage('Build Docker Image') {
       // build docker image
       sh "whoami"
