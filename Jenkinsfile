@@ -11,8 +11,6 @@ node {
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
 
-    def tagName = gitTagName()
-	
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/marciogreison/PrjTesteMyBatis.git'
@@ -20,13 +18,6 @@ node {
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'maven-3.6.1'
-      //env.GIT_TAG_NAME = gitTagName()
-      //env.GIT_TAG_MESSAGE = gitTagMessage()	    
-	    
-      //echo "GIT_TAG_NAME: ${env.GIT_TAG_NAME}"
-      //echo "GIT_TAG_MESSAGE: ${env.GIT_TAG_MESSAGE}"    	    
-      
-	//dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.GIT_TAG_NAME}"
     }    
   
     stage('Tests') {
@@ -68,41 +59,4 @@ node {
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
     }
-
-
-
-/** @return The tag name, or `null` if the current commit isn't a tag. */
-String gitTagName() {
-    commit = getCommit()
-    if (commit) {
-        desc = sh(script: "git describe --tags ${commit}", returnStdout: true)?.trim()
-        if (isTag(desc)) {
-            return desc
-        }
-    }
-    return null
-}
-
-/** @return The tag message, or `null` if the current commit isn't a tag. */
-String gitTagMessage() {
-    name = gitTagName()
-    msg = sh(script: "git tag -n10000 -l ${name}", returnStdout: true)?.trim()
-    if (msg) {
-        return msg.substring(name.size()+1, msg.size())
-    }
-    return null
-}
-
-String getCommit() {
-    return sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
-}
-
-@NonCPS
-boolean isTag(String desc) {
-    match = desc =~ /.+-[0-9]+-g[0-9A-Fa-f]{6,}$/
-    result = !match
-    match = null // prevent serialisation
-    return result
-}
-
 }
