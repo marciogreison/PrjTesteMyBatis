@@ -10,7 +10,7 @@ node {
     def dockerRepoUrl = "localhost:5000"
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
-stages {
+
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/marciogreison/PrjTesteMyBatis.git'
@@ -66,5 +66,5 @@ stages {
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
     }
-}
+
 }
