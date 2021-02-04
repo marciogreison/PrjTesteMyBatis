@@ -18,13 +18,13 @@ node {
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'maven-3.6.1'
-      env.GIT_TAG_NAME = gitTagName()
-      env.GIT_TAG_MESSAGE = gitTagMessage()	    
+      //env.GIT_TAG_NAME = gitTagName()
+      //env.GIT_TAG_MESSAGE = gitTagMessage()	    
 	    
-      echo "GIT_TAG_NAME: ${env.GIT_TAG_NAME}"
-      echo "GIT_TAG_MESSAGE: ${env.GIT_TAG_MESSAGE}"    	    
+      //echo "GIT_TAG_NAME: ${env.GIT_TAG_NAME}"
+      //echo "GIT_TAG_MESSAGE: ${env.GIT_TAG_MESSAGE}"    	    
       
-	dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.GIT_TAG_NAME}"
+	//dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.GIT_TAG_NAME}"
     }    
   
     stage('Tests') {
