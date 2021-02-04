@@ -11,7 +11,7 @@ node {
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
 
-    env.GIT_TAG_NAME = gitTagName()
+    def tagName = gitTagName()
 	
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
