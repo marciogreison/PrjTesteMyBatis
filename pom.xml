@@ -5,19 +5,7 @@
 	<groupId>com.estudos.java.marcioazevedo</groupId>
 	<artifactId>PrjTesteMyBatis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>9</source>
-					<target>9</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
+	
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
