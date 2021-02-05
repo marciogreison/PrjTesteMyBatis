@@ -2,4 +2,4 @@ version: "3.0"
 
 services:
   PrjTesteMyBatis:
-    image: marciogreison81/prj-teste-my-batis
+    image: localhost:5000/prj-teste-my-batis
