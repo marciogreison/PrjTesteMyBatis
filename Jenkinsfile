@@ -21,7 +21,7 @@ node {
     }    
   
     stage('Tests') {
-       sh "'${mvnHome}/bin/mvn' clean test3"
+       sh "'${mvnHome}/bin/mvn' clean test"
     }
 
     stage('Build Project') {
