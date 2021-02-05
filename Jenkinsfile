@@ -58,5 +58,8 @@ node {
       sh "docker login -u registry -p registry ${dockerRepoUrl}"
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
+      
+      sh "docker stack deploy ${dockerImageName}${dockerImageTag} -c docker-compose.yml"      
     }
+    
 }
