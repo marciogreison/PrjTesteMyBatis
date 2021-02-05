@@ -1,4 +1,4 @@
-node {
+node {	
     // reference to maven
     // ** NOTE: This 'maven-3.6.1' Maven tool must be configured in the Jenkins Global Configuration.   
     def mvnHome = tool 'maven-3.6.1'
@@ -10,7 +10,7 @@ node {
     def dockerRepoUrl = "localhost:5000"
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
-    
+
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/marciogreison/PrjTesteMyBatis.git'
@@ -20,12 +20,16 @@ node {
       mvnHome = tool 'maven-3.6.1'
     }    
   
+    stage('Tests') {
+       sh "'${mvnHome}/bin/mvn' clean test2"
+    }
+
     stage('Build Project') {
       // build project via maven
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
     }
 	
-	//stage('Publish Tests Results'){
+    //stage('Publish Tests Results'){
       //parallel(
         //publishJunitTestsResultsToJenkins: {
           //echo "Publish junit Tests Results"
@@ -33,10 +37,9 @@ node {
 	//	  archive 'target/*.jar'
         //},
         //publishJunitTestsResultsToSonar: {
-          //echo "This is branch b"
+        //  echo "This is branch b"
       //})
-    //}
-		
+    //}	
     stage('Build Docker Image') {
       // build docker image
       sh "whoami"
