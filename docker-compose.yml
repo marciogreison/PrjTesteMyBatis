@@ -2,6 +2,4 @@ version: "3.0"
 
 services:
   prj-teste-my-batis:
-    build: 
-      context: ./
-      dockerfile: Dockerfile
+    image: marciogreison81/prj-teste-my-batis:latest
