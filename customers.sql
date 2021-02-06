@@ -4,8 +4,8 @@ create table customers (
     id int primary key auto_increment,
     name varchar(100) not null,
     city varchar(100) default 'Bangalore',
-    email varchar(255) unique,
-    phone varchar(255) unique
+    email varchar(255),
+    phone varchar(255)
 );
 
 insert into customers (name, email, phone) values 

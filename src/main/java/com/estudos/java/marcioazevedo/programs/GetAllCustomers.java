@@ -9,7 +9,7 @@ import com.estudos.java.marcioazevedo.entity.Customer;
 
 public class GetAllCustomers {
 
-	public static void main(String[] args) throws IOException {
+	public static void test(String[] args) throws IOException {
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
 		List<Customer> list = dao.getAllCustomers();
