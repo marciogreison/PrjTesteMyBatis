@@ -9,7 +9,7 @@ import com.estudos.java.marcioazevedo.entity.Customer;
 
 public class GetCustomersByCity {
 
-	public static void main(String[] args) throws IOException {
+	public static void test(String[] args) throws IOException {
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
 		String city = "Mysore";

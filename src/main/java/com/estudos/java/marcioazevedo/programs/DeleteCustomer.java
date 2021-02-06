@@ -8,7 +8,7 @@ import com.estudos.java.marcioazevedo.entity.Customer;
 
 public class DeleteCustomer {
 
-	public static void main(String[] args) throws IOException {
+	public static void test(String[] args) throws IOException {
 		CustomerDao dao = DaoFactory.getCustomerDao();
 		
 		int id = 12;
