@@ -11,4 +11,5 @@ MAINTAINER marciogreison81@gmail.com
 COPY --from=maven_build /tmp/target/PrjTesteMyBatis-0.0.1-SNAPSHOT.jar /data/PrjTesteMyBatis-0.0.1-SNAPSHOT.jar
 COPY --from=maven_build /tmp/target/lib /data/
 WORKDIR /data/
+CMD ls -l
 CMD java -jar PrjTesteMyBatis-0.0.1-SNAPSHOT.jar
