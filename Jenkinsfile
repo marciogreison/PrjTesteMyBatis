@@ -23,12 +23,10 @@ node {
       mvnHome = tool 'maven-3.6.1'
       
 	  gitTag=sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+	  echo "*** TAG *** ${gitTag}"
       if(gitTag) {
-        def parts = gitTag.split('_')
-        if( parts.size()==2 && parts[0]==${dockerImageName} ) {
-          gitTagVersion=parts[1]
+          gitTagVersion=${gitTag}
           dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${gitTagVersion}"
-        }
       }      
     }    
   
