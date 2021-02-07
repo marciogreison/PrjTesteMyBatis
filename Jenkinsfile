@@ -68,7 +68,7 @@ node {
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
       
-      sh "docker stack deploy ${dockerImageName}_${env.BUILD_NUMBER} -c docker-compose.yml"      
+      sh "docker stack deploy ${dockerImageName}_${dockerImageTag} -c docker-compose.yml"      
     }
     
 }
