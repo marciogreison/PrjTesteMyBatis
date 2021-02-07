@@ -10,4 +10,5 @@ FROM openjdk
 MAINTAINER marciogreison81@gmail.com
 COPY --from=maven_build /tmp/target/PrjTesteMyBatis-0.0.1-SNAPSHOT.jar /data/PrjTesteMyBatis-0.0.1-SNAPSHOT.jar
 COPY --from=maven_build /tmp/target/lib /data/
-CMD java -jar /data/PrjTesteMyBatis-0.0.1-SNAPSHOT.jar
+WORKDIR /data/
+CMD java -jar PrjTesteMyBatis-0.0.1-SNAPSHOT.jar
