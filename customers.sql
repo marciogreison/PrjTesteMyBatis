@@ -12,4 +12,5 @@ insert into customers (name, email, phone) values
 ('Vinod', 'vinod@vinod.co', '9731424784'),
 ('Shyam', 'shyam@example.com', '9988776655'),
 ('James', 'james@xmpl.com', '9998887776'),
-('Rajesh', 'rajesh@example.com', '9876598765');
+('Rajesh', 'rajesh@example.com', '9876598765')
+;
