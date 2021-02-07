@@ -25,8 +25,7 @@ node {
 	  gitTag=sh(returnStdout: true, script: "git tag --contains | head -1").trim()
 	  echo "*** TAG *** ${gitTag}"
       if(gitTag) {
-          gitTagVersion=${gitTag}
-          dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${gitTagVersion}"
+          dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${gitTag}"
       }      
     }    
   
