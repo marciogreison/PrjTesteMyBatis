@@ -68,12 +68,7 @@ node {
       sh "docker tag ${dockerImageName} ${dockerImageTag}"
       sh "docker push ${dockerImageTag}"
       
-      if(gitTag){
-      	sh "docker stack deploy ${dockerImageName}_${gitTag} -c docker-compose.yml"
-      }
-      else {
-      	sh "docker stack deploy ${dockerImageName}_${env.BUILD_NUMBER} -c docker-compose.yml"
-      }      
+      sh "docker stack deploy ${dockerImageName}_${env.BUILD_NUMBER} -c docker-compose.yml"
     }
     
 }
