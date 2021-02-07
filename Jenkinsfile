@@ -11,6 +11,9 @@ node {
     def dockerImageName = "prj-teste-my-batis"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
 
+	def gitTag = null
+	def gitTagVersion = null
+
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/marciogreison/PrjTesteMyBatis.git'
@@ -18,6 +21,15 @@ node {
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'maven-3.6.1'
+      
+	  gitTag=sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+      if(gitTag) {
+        def parts = gitTag.split('_')
+        if( parts.size()==2 && parts[0]==${dockerImageName} ) {
+          gitTagVersion=parts[1]
+          dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${gitTagVersion}"
+        }
+      }      
     }    
   
     stage('Tests') {
