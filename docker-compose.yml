@@ -2,4 +2,4 @@ version: "3.0"
 
 services:
   PrjTesteMyBatis:
-    image: 10.0.0.139:5000/prj-teste-my-batis:v0.0.8
+    image: 10.0.0.139:5000/prj-teste-my-batis:v0.0.9
